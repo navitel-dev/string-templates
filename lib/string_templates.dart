@@ -8,7 +8,7 @@ const chColon = 0x3a;
 enum ParserState { Template, Argument, Format }
 
 class _ParserContext {
-  final Map<String, dynamic> params;
+  final Map<String, Object> params;
 
   var state = ParserState.Template;
   var result = '';
@@ -61,16 +61,14 @@ class _ParserContext {
 
   void addRightCurlyBracket() {
     var value = params[argument];
-    if (value != null) {
-      result += format.isNotEmpty ? sprintf(format, [value]) : value.toString();
-    }
+    result += format.isNotEmpty ? sprintf(format, [value]) : value.toString();
     argument = '';
     format = '';
     state = ParserState.Template;
   }
 }
 
-String interpolate(String template, Map<String, dynamic> params) {
+String interpolate(String template, Map<String, Object> params) {
   var ctx = _ParserContext(params);
   template.runes.forEach((int rune) {
     switch (rune) {

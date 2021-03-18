@@ -1,5 +1,6 @@
 # string-templates
-A simple library for handling string templates
+A simple library for handling string templates. Now can add symbols  
+in string for requierment length (as in example).
 
 ## ChangeLog
 
@@ -11,7 +12,7 @@ Add the following to your **pubspec.yaml**:
 
 ```
 dependencies:
-  string_templates: "^0.0.1"
+  string_templates: "^0.0.3"
 ```
 
 then run **pub install**.
@@ -28,7 +29,7 @@ import 'package:string_templates/string_templates.dart';
 import 'package:string_templates/string_templates.dart' as templates;
 
 void main(List<String> arguments) {
-  var params = <String, dynamic>{'arg1': 10, 'arg2': 20};
+  var params = <String, Object>{'arg1': 10, 'arg2': 20};
   print(templates.interpolate('{arg1:%08d}-{   arg2 }-{arg1}', params));
 }
 
