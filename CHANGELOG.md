@@ -3,3 +3,6 @@
 
 ## 0.0.2
 - Added simple example
+
+## 0.0.3
+- Null-safety support
